@@ -12,11 +12,10 @@ URL:		http://pyopenssl.sourceforge.net/
 BuildRequires:	latex2html
 BuildRequires:	lynx
 BuildRequires:	openssl-devel
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	tetex-latex
 BuildRequires:	tetex-metafont
-Requires:	python >= 2.2
-Requires:	openssl
+%pyrequires_eq	python-modules
 Obsoletes:	python-OpenSSL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
