@@ -16,6 +16,7 @@ BuildRequires:	lynx
 BuildRequires:	openssl-devel
 BuildRequires:	python-devel
 BuildRequires:	tetex-latex
+BuildRequires:	tetex-metafont
 Requires:	python >= 2.2
 Requires:	openssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
