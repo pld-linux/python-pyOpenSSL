@@ -3,7 +3,7 @@ Summary:	Binding of OpenSSL for Python
 Summary(pl):	Interfejs OpenSSL dla Pythona
 Name:		python-%{module}
 Version:	0.6
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/pyopenssl/%{module}-%{version}.tar.gz
