@@ -11,11 +11,11 @@ Source0:	http://dl.sourceforge.net/pyopenssl/%{module}-%{version}.tar.gz
 # Source0-md5:	4b27570a24eb21664e8c033394496a0e
 Patch0:		%{name}-license-warning.patch
 URL:		http://pyopenssl.sourceforge.net/
+BuildRequires:	latex2html
+BuildRequires:	lynx
 BuildRequires:	openssl-devel
 BuildRequires:	python-devel
 BuildRequires:	tetex-latex
-BuildRequires:	latex2html
-BuildRequires:	lynx
 Requires:	python >= 2.2
 Requires:	openssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -70,7 +70,6 @@ Pakiet zawieraj±cy przyk³adowe skrypty dla modu³u Pythona pyOpenSSL.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
 
 python setup.py install \
@@ -91,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README ChangeLog TODO
+%dir %{py_sitedir}/OpenSSL
 %attr(755,root,root) %{py_sitedir}/OpenSSL/*.so
 %{py_sitedir}/OpenSSL/*.py[oc]
 
