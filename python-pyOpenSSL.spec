@@ -17,6 +17,7 @@ BuildRequires:	tetex-latex
 BuildRequires:	tetex-metafont
 Requires:	python >= 2.2
 Requires:	openssl
+Obsoletes:	python-OpenSSL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
