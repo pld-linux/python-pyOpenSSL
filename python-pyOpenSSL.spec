@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 %define		module	pyOpenSSL
 Summary:	Binding of OpenSSL for Python
 Summary(pl):	Interfejs OpenSSL dla Pythona
