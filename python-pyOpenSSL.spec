@@ -20,10 +20,10 @@ Requires:	openssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Binding of OpenSSL for Python.
+Python interface to the OpenSSL library.
 
 %description -l pl
-Interfejs OpenSSL dla Pythona.
+Interfejs Pythona do biblioteki OpenSSL.
 
 %package doc
 Summary:	Documentation for pyOpenSSL module
@@ -32,7 +32,8 @@ Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
 %description doc
-This package contains documentation files for pyOpenSSL Python module.
+This package contains documentation files for pyOpenSSL Python
+module.
 
 %description doc -l pl
 Pakiet zawieraj±cy dokumentacjê dla modu³u Pythona pyOpenSSL.
