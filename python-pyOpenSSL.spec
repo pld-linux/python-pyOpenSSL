@@ -11,7 +11,7 @@ Source0:	http://dl.sourceforge.net/pyopenssl/%{module}-%{version}.tar.gz
 URL:		http://pyopenssl.sourceforge.net/
 BuildRequires:	latex2html
 BuildRequires:	lynx
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	tetex-latex
 BuildRequires:	tetex-metafont
