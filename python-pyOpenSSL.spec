@@ -1,6 +1,6 @@
 %define		module	pyOpenSSL
 Summary:	Binding of OpenSSL for Python
-Summary(pl):	Interfejs OpenSSL dla Pythona
+Summary(pl.UTF-8):   Interfejs OpenSSL dla Pythona
 Name:		python-%{module}
 Version:	0.6
 Release:	3
@@ -23,20 +23,20 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Python interface to the OpenSSL library.
 
-%description -l pl
+%description -l pl.UTF-8
 Interfejs Pythona do biblioteki OpenSSL.
 
 %package examples
 Summary:	Examples for pyOpenSSL module
-Summary(pl):	Przyk≥ady do modu≥u pyOpenSSL
+Summary(pl.UTF-8):   Przyk≈Çady do modu≈Çu pyOpenSSL
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
 %description examples
 This package contains example files for pyOpenSSL Python module.
 
-%description examples -l pl
-Pakiet zawieraj±cy przyk≥adowe skrypty dla modu≥u Pythona pyOpenSSL.
+%description examples -l pl.UTF-8
+Pakiet zawierajƒÖcy przyk≈Çadowe skrypty dla modu≈Çu Pythona pyOpenSSL.
 
 %prep
 %setup -q -n %{module}-%{version}
