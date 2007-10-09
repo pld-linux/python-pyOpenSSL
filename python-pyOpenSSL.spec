@@ -3,11 +3,14 @@ Summary:	Binding of OpenSSL for Python
 Summary(pl.UTF-8):	Interfejs OpenSSL dla Pythona
 Name:		python-%{module}
 Version:	0.6
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/pyopenssl/%{module}-%{version}.tar.gz
 # Source0-md5:	6200b71d3eb294a312d52c4825fc71c5
+Patch0:		%{module}-%{version}-pkcs12.patch
+Patch1:		%{module}-%{version}-crl.patch
+Patch2:         %{module}-%{version}-pkcs12_cafile.patch
 URL:		http://pyopenssl.sourceforge.net/
 BuildRequires:	lynx
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -40,6 +43,9 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyOpenSSL.
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
