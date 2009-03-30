@@ -2,12 +2,12 @@
 Summary:	Binding of OpenSSL for Python
 Summary(pl.UTF-8):	Interfejs OpenSSL dla Pythona
 Name:		python-%{module}
-Version:	0.6
-Release:	6
+Version:	0.8
+Release:	1
 License:	LGPL
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/pyopenssl/%{module}-%{version}.tar.gz
-# Source0-md5:	6200b71d3eb294a312d52c4825fc71c5
+# Source0-md5:	00377690f224d9e59c833fb0459603f4
 Patch0:		%{module}-%{version}-pkcs12.patch
 Patch1:		%{module}-%{version}-crl.patch
 Patch2:         %{module}-%{version}-pkcs12_cafile.patch
@@ -48,28 +48,34 @@ Pakiet zawierający przykładowe skrypty dla modułu Pythona pyOpenSSL.
 %patch1 -p1
 %patch2 -p1
 
+%build
+export CFLAGS="%{rpmcflags}"
+%{__python} setup.py build
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
 
-python setup.py install \
+%{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--install-lib=%{py_sitedir} \
 	--optimize=2
 
-find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py -exec rm {} \;
+find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py -exec rm -f {} \;
 
-cp -ra examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README ChangeLog TODO doc/pyOpenSSL.{ps,txt}
+%doc README ChangeLog TODO 
 %dir %{py_sitedir}/OpenSSL
+%dir %{py_sitedir}/OpenSSL/test
 %attr(755,root,root) %{py_sitedir}/OpenSSL/*.so
 %{py_sitedir}/OpenSSL/*.py[oc]
+%{py_sitedir}/OpenSSL/test/*.py[oc]
 %{py_sitedir}/*.egg-info
 
 %files examples
