@@ -17,12 +17,12 @@ Source0:	https://pypi.python.org/packages/source/p/pyOpenSSL/%{module}-%{version
 URL:		https://github.com/pyca/pyopenssl
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.6
-BuildRequires:	rpmbuild(macros) >= 1.219
 %endif
 %if %{with python3}
 BuildRequires:	python3-modules >= 3.2
 %endif
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.612
 %{?with_doc:BuildRequires:	sphinx-pdg}
 Requires:	python-cryptography >= 0.2.1
 Requires:	python-six >= 1.5.2
