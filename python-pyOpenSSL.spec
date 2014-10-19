@@ -9,7 +9,7 @@ Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
 Version:	0.14
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
