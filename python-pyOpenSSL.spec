@@ -22,7 +22,7 @@ BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	python3-modules >= 3.2
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.612
+BuildRequires:	rpmbuild(macros) >= 1.710
 %{?with_doc:BuildRequires:	sphinx-pdg}
 Requires:	python-cryptography >= 0.2.1
 Requires:	python-six >= 1.5.2
