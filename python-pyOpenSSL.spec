@@ -94,6 +94,17 @@ This package contains example files for pyOpenSSL Python module.
 %description examples -l pl.UTF-8
 Pakiet zawierający przykładowe skrypty dla modułu Pythona pyOpenSSL.
 
+%package apidocs
+Summary:	%{module} API documentation
+Summary(pl.UTF-8):	Dokumentacja API %{module}
+Group:		Documentation
+
+%description apidocs
+API documentation for %{module}.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API %{module}.
+
 %prep
 %setup -q -n %{module}-%{version}
 
@@ -130,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README.rst TODO %{?with_doc:doc/_build/html/{*.html,_static,api}}
+%doc ChangeLog README.rst TODO
 %dir %{py_sitescriptdir}/OpenSSL
 %{py_sitescriptdir}/OpenSSL/*.py[co]
 %dir %{py_sitescriptdir}/OpenSSL/test
@@ -141,7 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-pyOpenSSL
 %defattr(644,root,root,755)
-%doc ChangeLog README.rst TODO %{?with_doc:doc/_build/html/{*.html,_static,api}}
+%doc ChangeLog README.rst TODO
 %dir %{py3_sitescriptdir}/OpenSSL
 %{py3_sitescriptdir}/OpenSSL/*.py
 %{py3_sitescriptdir}/OpenSSL/__pycache__
@@ -154,3 +165,9 @@ rm -rf $RPM_BUILD_ROOT
 %files examples
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
+
+%if %{with doc}
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/_build/html/{*.html,_static,api}
+%endif
