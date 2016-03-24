@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_with	tests	# test target [no tests are run with python2, some tests are not ready for python3???]
 %bcond_without	python2	# CPython 2.x module
 %bcond_without	python3	# CPython 3.x module
 %bcond_without	doc	# HTML documentation (sphinx-based)
@@ -8,25 +9,37 @@
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
-Version:	0.15
+Version:	16.0.0
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
+#Source0Download: https://pypi.python.org/simple/pyopenssl/
 Source0:	https://pypi.python.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
-# Source0-md5:	661ddf97b75320d6004a56160a4a8578
+# Source0-md5:	9587d813dcf656e9f2760e41a3682dc3
 URL:		https://github.com/pyca/pyopenssl
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-cryptography >= 1.3
+BuildRequires:	python-six >= 1.5.2
+%endif
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 3.2
+BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-cryptography >= 1.3
+BuildRequires:	python3-six >= 1.5.2
+%endif
 %endif
 %if %{with doc}
+BuildRequires:	python-sphinx_rtd_theme
 BuildRequires:	sphinx-pdg
 %endif
-Requires:	python-cryptography >= 0.2.1
+Requires:	python-cryptography >= 1.3
 Requires:	python-six >= 1.5.2
 Obsoletes:	python-OpenSSL
 Obsoletes:	python-pyOpenSSL-doc
@@ -58,7 +71,7 @@ Ten pakiet zawiera moduły Pythona 2.
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Group:		Libraries/Python
-Requires:	python3-cryptography >= 0.2.1
+Requires:	python3-cryptography >= 1.3
 Requires:	python3-six >= 1.5.2
 
 %description -n python3-pyOpenSSL
@@ -110,10 +123,12 @@ Dokumentacja API %{module}.
 
 %build
 %if %{with python2}
-%py_build
+LC_ALL=C.UTF-8 \
+%py_build %{?with_tests:test}
 %endif
 %if %{with python3}
-%py3_build
+LC_ALL=C.UTF-8 \
+%py3_build %{?with_tests:test}
 %endif
 
 %if %{with doc}
@@ -141,24 +156,19 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README.rst TODO
+%doc CHANGELOG.rst README.rst
 %dir %{py_sitescriptdir}/OpenSSL
 %{py_sitescriptdir}/OpenSSL/*.py[co]
-%dir %{py_sitescriptdir}/OpenSSL/test
-%{py_sitescriptdir}/OpenSSL/test/*.py[co]
 %{py_sitescriptdir}/pyOpenSSL-%{version}-py*.egg-info
 %endif
 
 %if %{with python3}
 %files -n python3-pyOpenSSL
 %defattr(644,root,root,755)
-%doc ChangeLog README.rst TODO
+%doc CHANGELOG.rst README.rst
 %dir %{py3_sitescriptdir}/OpenSSL
 %{py3_sitescriptdir}/OpenSSL/*.py
 %{py3_sitescriptdir}/OpenSSL/__pycache__
-%dir %{py3_sitescriptdir}/OpenSSL/test
-%{py3_sitescriptdir}/OpenSSL/test/*.py
-%{py3_sitescriptdir}/OpenSSL/test/__pycache__
 %{py3_sitescriptdir}/pyOpenSSL-%{version}-py*.egg-info
 %endif
 
