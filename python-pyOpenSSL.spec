@@ -9,13 +9,13 @@
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
-Version:	16.0.0
-Release:	3
+Version:	16.2.0
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/pyopenssl/
-Source0:	https://pypi.python.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
-# Source0-md5:	9587d813dcf656e9f2760e41a3682dc3
+Source0:	https://files.pythonhosted.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
+# Source0-md5:	6635503758c65ea6f70d18d1b18e46d5
 URL:		https://github.com/pyca/pyopenssl
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
@@ -23,7 +23,7 @@ BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	python-setuptools
 %if %{with tests}
-BuildRequires:	python-cryptography >= 1.3
+BuildRequires:	python-cryptography >= 1.3.4
 BuildRequires:	python-six >= 1.5.2
 %endif
 %endif
@@ -31,15 +31,15 @@ BuildRequires:	python-six >= 1.5.2
 BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-cryptography >= 1.3
+BuildRequires:	python3-cryptography >= 1.3.4
 BuildRequires:	python3-six >= 1.5.2
 %endif
 %endif
 %if %{with doc}
-BuildRequires:	python-sphinx_rtd_theme
+BuildRequires:	python3-sphinx_rtd_theme
 BuildRequires:	sphinx-pdg
 %endif
-Requires:	python-cryptography >= 1.3
+Requires:	python-cryptography >= 1.3.4
 Requires:	python-six >= 1.5.2
 Obsoletes:	python-OpenSSL
 Obsoletes:	python-pyOpenSSL-doc
@@ -71,7 +71,7 @@ Ten pakiet zawiera moduły Pythona 2.
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Group:		Libraries/Python
-Requires:	python3-cryptography >= 1.3
+Requires:	python3-cryptography >= 1.3.4
 Requires:	python3-six >= 1.5.2
 
 %description -n python3-pyOpenSSL
