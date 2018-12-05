@@ -13,7 +13,7 @@ Version:	18.0.0
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/pyopenssl/
+#Source0Download: https://pypi.org/simple/pyopenssl/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
 # Source0-md5:	c92e9c85b520b7e153fef0f7f3c5dda7
 URL:		https://github.com/pyca/pyopenssl
