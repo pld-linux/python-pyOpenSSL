@@ -10,13 +10,13 @@
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
-Version:	19.0.0
-Release:	2
+Version:	19.1.0
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyopenssl/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
-# Source0-md5:	b9876625dc1d5a5a662d748689191537
+# Source0-md5:	d9804fedbd1eb0c7d9243397b1fbf972
 URL:		https://github.com/pyca/pyopenssl
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
@@ -27,7 +27,7 @@ BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-setuptools
 %if %{with tests}
-BuildRequires:	python-cryptography >= 2.3
+BuildRequires:	python-cryptography >= 2.8
 BuildRequires:	python-flaky
 BuildRequires:	python-pretend
 BuildRequires:	python-pytest >= 3.0.1
@@ -38,7 +38,7 @@ BuildRequires:	python-six >= 1.5.2
 BuildRequires:	python3-devel >= 1:3.4
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-cryptography >= 2.3
+BuildRequires:	python3-cryptography >= 2.8
 BuildRequires:	python3-flaky
 BuildRequires:	python3-pretend
 BuildRequires:	python3-pytest >= 3.0.1
@@ -102,18 +102,6 @@ Wysokopoziomowe obudowanie podzbioru biblioteki OpenSSL, zawierające:
 
 Ten pakiet zawiera moduły Pythona 3.
 
-%package examples
-Summary:	Examples for pyOpenSSL module
-Summary(pl.UTF-8):	Przykłady do modułu pyOpenSSL
-Group:		Libraries/Python
-Requires:	%{name} = %{version}-%{release}
-
-%description examples
-This package contains example files for pyOpenSSL Python module.
-
-%description examples -l pl.UTF-8
-Pakiet zawierający przykładowe skrypty dla modułu Pythona pyOpenSSL.
-
 %package apidocs
 Summary:	%{module} API documentation
 Summary(pl.UTF-8):	Dokumentacja API %{module}
@@ -156,7 +144,6 @@ PYTHONPATH=$(pwd)/build-3/lib \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %if %{with python2}
 %py_install
@@ -167,8 +154,6 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %if %{with python3}
 %py3_install
 %endif
-
-cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -191,10 +176,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/OpenSSL/__pycache__
 %{py3_sitescriptdir}/pyOpenSSL-%{version}-py*.egg-info
 %endif
-
-%files examples
-%defattr(644,root,root,755)
-%{_examplesdir}/%{name}-%{version}
 
 %if %{with doc}
 %files apidocs
