@@ -11,7 +11,7 @@ Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
 Version:	19.1.0
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyopenssl/
@@ -50,8 +50,7 @@ BuildRequires:	python3-sphinx_rtd_theme
 BuildRequires:	sphinx-pdg-3
 %endif
 Obsoletes:	python-OpenSSL
-Obsoletes:	python-pyOpenSSL-doc
-Obsoletes:	python-pyOpenSSL-doc-html
+Obsoletes:	python-pyOpenSSL-examples
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -104,14 +103,16 @@ Ten pakiet zawiera moduły Pythona 3.
 
 %package apidocs
 Summary:	%{module} API documentation
-Summary(pl.UTF-8):	Dokumentacja API %{module}
+Summary(pl.UTF-8):	Dokumentacja API modułu %{module}
 Group:		Documentation
+Obsoletes:	python-pyOpenSSL-doc
+Obsoletes:	python-pyOpenSSL-doc-html
 
 %description apidocs
 API documentation for %{module}.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API %{module}.
+Dokumentacja API modułu %{module}.
 
 %prep
 %setup -q -n %{module}-%{version}
