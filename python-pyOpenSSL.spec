@@ -10,13 +10,13 @@
 Summary:	Python 2 interface to the OpenSSL library
 Summary(pl.UTF-8):	Interfejs Pythona 2 do biblioteki OpenSSL
 Name:		python-%{module}
-Version:	19.1.0
-Release:	4
+Version:	20.0.1
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyopenssl/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyOpenSSL/%{module}-%{version}.tar.gz
-# Source0-md5:	d9804fedbd1eb0c7d9243397b1fbf972
+# Source0-md5:	40f81b5faf059e89ab4377ec5554bd5e
 URL:		https://github.com/pyca/pyopenssl
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
