@@ -3,7 +3,7 @@
 # Conditional build:
 %bcond_without	tests	# unit tests
 %bcond_without	python2	# CPython 2.x module
-%bcond_without	python3	# CPython 3.x module
+%bcond_with	python3	# CPython 3.x module (built from python3-pyOpenSSL.spec)
 %bcond_without	doc	# HTML documentation (sphinx-based)
 
 %define		module	pyOpenSSL
@@ -47,8 +47,8 @@ BuildRequires:	python3-six >= 1.5.2
 %endif
 %endif
 %if %{with doc}
-BuildRequires:	python3-sphinx_rtd_theme
-BuildRequires:	sphinx-pdg-3
+BuildRequires:	python-sphinx_rtd_theme
+BuildRequires:	sphinx-pdg-2
 %endif
 Obsoletes:	python-OpenSSL < 0.6
 Obsoletes:	python-pyOpenSSL-examples < 19.1.0
@@ -141,7 +141,7 @@ PYTHONPATH=$(pwd)/build-3/lib \
 
 %if %{with doc}
 %{__make} -C doc html \
-	SPHINXBUILD=sphinx-build-3
+	SPHINXBUILD=sphinx-build-2
 %endif
 
 %install
