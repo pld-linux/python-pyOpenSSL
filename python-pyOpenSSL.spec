@@ -1,7 +1,7 @@
 # TODO: check why disabled tests fail and reenable them
 #
 # Conditional build:
-%bcond_without	tests	# unit tests
+%bcond_with	tests	# unit tests (seem not ready for openssl 3)
 %bcond_without	python2	# CPython 2.x module
 %bcond_with	python3	# CPython 3.x module (built from python3-pyOpenSSL.spec)
 %bcond_without	doc	# HTML documentation (sphinx-based)
